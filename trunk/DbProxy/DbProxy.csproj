@@ -1,0 +1,97 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{230B51C2-68E2-45DD-BD9F-D3C00DC4767D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DbProxy</RootNamespace>
+    <AssemblyName>DbProxy</AssemblyName>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Client\DbProxyCommand.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Client\DbProxyConnection.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Client\DbProxyDataReader.cs" />
+    <Compile Include="Client\DbProxyException.cs" />
+    <Compile Include="Client\DbProxyFactory.cs" />
+    <Compile Include="Client\DbProxyParameterCollection.cs" />
+    <Compile Include="Client\PooledTdsConnection.cs" />
+    <Compile Include="Client\NodeEncoder.cs" />
+    <Compile Include="Client\TdsConnection.cs" />
+    <Compile Include="Client\TdsConnectionPool.cs" />
+    <Compile Include="Common\ExceptionHelper.cs" />
+    <Compile Include="DbProxyParameter.cs" />
+    <Compile Include="Client\ITdsConnection.cs" />
+    <Compile Include="Monitor\DbProxyMonitor.cs" />
+    <Compile Include="Server\DbAccess.cs" />
+    <Compile Include="Server\DbProxyServer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Server\NodeDecoder.cs" />
+    <Compile Include="Server\TdsClient.cs" />
+    <Compile Include="DbProxyTypes\DbProxyNullValueException.cs" />
+    <Compile Include="DbProxyTypes\DbProxyTypeException.cs" />
+    <Compile Include="Server\TdsException.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BEncoding\BEncoding.csproj">
+      <Project>{EB64D20D-751C-49A8-B150-10C59BF87A44}</Project>
+      <Name>BEncoding</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CRC\CRC.csproj">
+      <Project>{3440207D-C30D-4F6F-85F6-2E9FC5DA01AA}</Project>
+      <Name>CRC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Packets\Packets.csproj">
+      <Project>{207E0DD2-0E42-4664-B3FA-1027AC8F8325}</Project>
+      <Name>Packets</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Transmission\Transmission.csproj">
+      <Project>{A798D3FE-B1DC-4078-944B-187746408D4F}</Project>
+      <Name>Transmission</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
